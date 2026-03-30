@@ -1,20 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Home.css";
 
 function Home() {
   const [number, setNumber] = useState(0);
+
   function handleIncrease() {
     setNumber((prevState) => prevState + 1);
+    document.title = `home: ${number + 1} `;
   }
   function handleDecrease() {
     if (number === 0) {
       return;
     }
     setNumber((prevState) => prevState - 1);
+    document.title = `home: ${number - 1}`;
   }
   function handleClear() {
     setNumber(0);
+    document.title = `home: 0`;
   }
+  // useEffect(() => {
+  //   document.title = `home: ${number}`;
+  // }, [number]);
   return (
     <div>
       <div>
